@@ -8,7 +8,14 @@
  */
 
 /** @type {import('next').NextConfig} */
+const stylexPlugin = require("@stylexjs/nextjs-plugin");
 
-module.exports = {
-  transpilePackages: ['@stylexjs/open-props'],
+const nextConfig = {
+  pageExtensions: ["js", "jsx", "ts", "tsx"],
+  // Optionally, add any other Next.js config below
 };
+
+module.exports = stylexPlugin({
+  filename: "stylex-bundle.css",
+  rootDir: __dirname,
+})(nextConfig);

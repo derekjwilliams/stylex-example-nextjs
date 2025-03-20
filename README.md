@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Example Next.js StyleX Project
 
-## Getting Started
+## Original Code
 
-First, run the development server:
+This is from the excellent code at https://github.com/facebook/stylex/tree/main/examples/example-nextjs
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Motivation
+
+The original code is great, but is part of the larger stylex build, https://github.com/facebook/stylex.  When a user attempts to build the 
+example at https://github.com/facebook/stylex/tree/main/examples/example-nextjs they may run into quite a few errors on the build.  This is
+primarily due to dependencies in the configuration.
+
+## What I Tried First
+
+I performed a full build of the stylex repo, following the [README](https://github.com/facebook/stylex/blob/main/README.md).  I then navigated to the [next js example](https://github.com/facebook/stylex/tree/main/examples/example-nextjs) and tried a few things, the most obvious being `npm run example:build`, `npm install`, etc..  
+Various errors were encountered.
+
+## What This Repo Has Going For It
+
+This repo contains the code from the stylex/examples/example-nextjs but in a standalone state.  
+
+
+### Changes 
+
+#### Configuration
+
+Changes were made to the configuration files `postcss.config.js`, `next.config.js`.  
+
+#### Test Files
+
+Two of the files (`typetests/theming1.tsx` and `typetests/typetests.ts`l) have been completely commented out because they were causing errors when building.
+
+#### Aliases Removed
+
+For example, in `components/Card.tsx`
+
+```diff
+-import { globalTokens as $, spacing, text } from '@/app/globalTokens.stylex';
++import { globalTokens as $, spacing, text } from '../app/globalTokens.stylex';
+ import { colors } from '@stylexjs/open-props/lib/colors.stylex';
+-import { tokens } from '@/app/CardTokens.stylex';
++import { tokens } from '../app/CardTokens.stylex';
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This is becasue the aliases were throwing errors on build, this is likely an easy fix, but I personally avoid aliases so it was not a high priority for me.
