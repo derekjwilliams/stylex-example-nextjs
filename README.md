@@ -28,7 +28,7 @@ Changes were made to the configuration files `postcss.config.js`, `next.config.j
 
 #### Test Files
 
-Two of the files (`typetests/theming1.tsx` and `typetests/typetests.ts`l) have been completely commented out because they were causing errors when building.
+Two of the files (`typetests/theming1.tsx` and `typetests/typetests.ts`) have been completely commented out because they were causing errors when building.
 
 #### Aliases Removed
 
